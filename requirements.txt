@@ -1,0 +1,12 @@
+pip install https://github.com/kivymd/KivyMD/archive/master.zip
+kivy 
+pygame
+fpdf2
+sqlite3 # Built-in python module. No need to install
+sys # Built-in python module. No need to install
+os # Built-in python module. No need to install
+subprocess # Built-in python module. No need to install
+black # Code formatter
+mypy # Type checker
+pylint # Linter
+pytest # Testing framework
