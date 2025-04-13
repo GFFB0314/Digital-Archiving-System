@@ -1,0 +1,1487 @@
+ScreenManager:
+    WelcomeScreen:
+    LoginScreen:
+    MenuScreen:
+    MenuScreen2:
+    MenuScreen3:
+    SearchScreen:
+    SearchScreen2:
+    ViewRecordScreen:
+    form_filling_yes_leasing:
+    form_filling_no_leasing:
+    About_Us:
+
+
+<WelcomeScreen>:
+    name: "welcome"
+    MDFloatLayout:
+        #md_bg_color: (0.5,0.4,0.7,1)
+        Image:
+            #source: "D:/Python PC/KivyMD/Archive_system/Image/ocean.jpg"
+            source: "./Image/welcome3.jpg"
+            size_hint: 1, 1  # Set size to fill the whole screen
+            allow_stretch: True  # Allow stretching to fill the screen
+            keep_ratio: False  # Allow image to stretch without keeping aspect ratio (optional)
+
+        MDLabel:
+            text: "Welcome to xSAVE"
+            font_style: "Display"
+            role: "large"
+            markup: True
+            halign: "center"
+            pos_hint: {"center_x": 0.5, "center_y": 0.85}
+            theme_text_color: "Primary"
+            bold: True
+            #text_color: 242/255.0, 229/255.0, 170/255.0, 1
+
+
+        MDButton:
+            style: "tonal"
+            theme_width: "Custom"
+            pos_hint: {"center_x": .5, "center_y": .095}
+            height: "56dp" # or dp(56)
+            size_hint_x: 0.3
+            #theme_bg_color: "Custom"
+            #md_bg_color: "brown"
+            on_release:
+                app.nextScreen("login")
+            #MDButtonIcon:
+                #x: text.x - (self.width + dp(10))
+                #icon: "plus"
+            MDButtonText:
+                id: text
+                text: "Get Started!"
+                bold: True
+                font_style: "Title"
+                pos_hint: {"center_x": .5, "center_y": .5}
+
+
+
+        
+<LoginScreen>:
+    name: "login"
+    
+    canvas.before:
+        Color:
+            #rgba: 183/255.0, 130/255.0, 95/255.0, 1
+            rgba: 157/255.0, 137/255.0, 147/255.0, 1 # Not working, to be remove
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    
+    Image:
+        source: "./Image/login.jpg"
+
+        #pos_hint: {"center_x": 0.5, "center_y": 0.65}
+        size_hint: 1, 1  # Set size to fill the whole screen
+        allow_stretch: True  # Allow stretching to fill the screen
+        keep_ratio: False  # Allow image to stretch without keeping aspect ratio (optional)
+
+
+
+    MDCard:
+        elevation: 10
+        size_hint: None, None
+        size: 350, 450
+        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+        padding: 55
+        spacing: 25
+        # style: "elevated"
+        orientation: "vertical"
+        #md_bg_color: 0.5, 0.5, 0.7, 1
+        opacity: 0.8
+    
+        MDLabel:
+            id: welcome_label 
+            text: "Welcome !"
+            size_hint_y: None # ensuring the text is not adjusting as the screen size is changing
+            padding_y: 15
+            font_style: "Display"
+            bold: True
+            role: "medium"
+            #font_size: 50
+            halign: "center"
+            valign: "center"
+            height: self.texture_size[1] # the text should text just the available size for it
+        
+        #MDTextField:
+            #id: username_field
+            #hint_text: "username"
+            #hint_text_font_size: "20sp"
+            #helper_text: "enter correct username"
+            #elper_text_mode: "on_focus"
+            #size_hint_x: None
+            ##width: 200
+            #pos_hint: {"center_x": 0.5}
+            #icon_right: "login"
+            #font_size: 20
+
+
+        MDTextField:
+            mode: "outlined"
+            id: username_field
+            size_hint_x: None
+            width: dp(300)
+            pos_hint: {"center_x": 0.5}
+
+            MDTextFieldHintText:
+                text: "Username"
+
+            MDTextFieldHelperText:
+                text: "enter correct username"
+                mode: "on_focus"
+                text_color_focus: 0.65, 0.55, 0.3, 1 
+
+            MDTextFieldTrailingIcon:
+                icon: "login"
+
+            MDTextFieldMaxLengthText:
+                max_text_length: 7
+
+        
+        MDTextField:
+            id: password_field
+            mode: "outlined"
+            size_hint_x: None
+            width: dp(300)
+            pos_hint: {"center_x": 0.5, "center_y": 0.9}
+            password: True
+
+            MDTextFieldHintText:
+                text: "Password"
+
+            MDTextFieldHelperText:
+                text: "enter correct password"
+                mode: "on_focus"
+                text_color_focus: 0.65, 0.55, 0.3, 1  
+
+            MDTextFieldTrailingIcon:
+                icon: "eye-off"
+
+            MDTextFieldMaxLengthText:
+                max_text_length: 7
+
+        
+            
+        #MDTextField:
+            #id: password_field
+            #hint_text: "password"
+            #hint_text_font_size: "100sp"
+            #helper_text: "enter correct password"
+            #helper_text_mode: "on_focus"
+            #size_hint_x: None
+            #width: 200
+            #pos_hint: {"center_x": 0.5, "center_y": 0.9}
+            #icon_right: "eye-off"
+            #icon_right_color: app.theme_cls.primary_color # Useless my code
+            #font_size: 20
+            #password: True
+        MDLabel: 
+            id: error_label
+            text: ""
+            # size_hint_y: 0.5
+            spacing: dp(10)
+            halign: "center" # CENTERS THE TEXT INSIDE THE WIDGET
+            pos_hint: {"center_x": 0.5} # CENTERS THE WIDGET ON THE PARENT LAYOUT
+            font_size: 15
+            theme_text_color: "Custom"
+            text_color: 0.9, 0.1, 0.1, 1   
+
+        MDExtendedFabButton:
+            fab_state: "expand"
+            theme_width: "Custom"
+            height: dp(50)
+            size_hint_x: 0.7
+            #theme_bg_color: "Custom"
+            #md_bg_color: 0.7, 0.4, 0.4, 1
+            pos_hint: {"center_x": 0.5, "center_y": 0.2}
+            on_release: 
+                app.check_credentials(password_field.text, username_field.text)
+
+
+            MDExtendedFabButtonText:
+                font_style: "Title"
+                role: "large"
+                text: "Login"
+        #MDButton:
+            #text: "Login"
+            #font_size: 20
+            #pos_hint: {"center_x": 0.5, "center_y": 0.2}
+            #md_bg_color: 0.7, 0.4, 0.4, 1
+            #on_release: app.check_credentials(password_field.text, username_field.text)
+
+<MenuScreen>:
+    name: "menu"
+    
+    MDFloatLayout:
+
+        Image:
+            source: "./Image/menuV5.jpg" # Drop of water is to be used but welcome.jpg is been used for now
+            allow_stretch: True
+            size_hint: 1, 1
+            keep_ratio: False
+            opacity: 1
+
+
+        MDLabel:
+            text: "xSAVE"
+            font_style: "Display"
+            role: "small"
+            bold: True
+            pos_hint: {"center_x": .5, "center_y": 0.82}  # This places it horizontally centered, vertically near the top
+            halign: "center"
+            valign: "top"
+            #size_hint: None, None
+            #size: self.texture_size  # auto-fit the text size
+
+        MDLabel:
+            text: "Your Simple and Fast Archiving System"
+            font_style: "Display"
+            role: "small"
+            bold: True
+            pos_hint: {"center_x": .5, "center_y": 0.1}  
+            halign: "center"
+            #valign: "top"
+            #size_hint: None, None
+            #size: self.texture_size  # auto-fit the text size
+
+    
+    
+
+    
+
+    MDNavigationLayout
+        MDScreenManager
+            MDScreen:
+                MDBoxLayout:
+                    orientation: "vertical"
+                    MDTopAppBar:
+                        type: "small"
+                        theme_bg_color: "Custom"
+                        #md_bg_color: 255/255.0, 255/255.0, 255/255.0, .3
+                        md_bg_color: 216/255.0, 191/255.0, 216/255.0, 1
+
+                        MDTopAppBarLeadingButtonContainer:
+                            MDActionTopAppBarButton:
+                                icon: "menu"
+                                on_release: nav_drawer.set_state("toggle")
+
+                        MDTopAppBarTitle:
+                            text: "MENU"
+                            #pos_hint: {"center_x": .5}
+                            bold: True
+                        
+
+                        MDTopAppBarTrailingButtonContainer:
+                            MDActionTopAppBarButton:
+                                icon: "exit-to-app"
+                                on_release: app.nextScreen("login")
+
+                    Widget: # Spacer to push content below the top bar
+
+                    
+
+
+        MDNavigationDrawer:
+            id: nav_drawer
+            #drawer_type: "modal"
+            #anchor: "left"
+            width: 307
+            radius: [0, 0, 0, 0]# LT, RT, RB, LB
+
+            MDNavigationDrawerMenu:
+                BoxLayout:
+                    orientation: "vertical"
+                    size_hint_y: None
+                    padding: [0, dp(50), 0, dp(20)] # L T R B
+                    spacing: dp(40)
+                    height: dp(315)
+                    #height: self.minimum_height
+                    Image:
+                        source: "./Image/profile-logo.png"
+                        size_hint: None, None
+                        size: 500, 250
+                        halign: "center"
+                        pos_hint:{"center_x": 0.5} # Using "center_y" will have no effect since the orientation of the BoxLayout is vertical
+                    MDLabel:
+                        #text: "USER"
+                        text: "SmarTrack"
+                        halign: "center"
+                        pos_hint: {"center_x": 0.5}
+                        #font_size:40
+                        font_style: "Headline"
+                        role: "large"
+
+                MDNavigationDrawerDivider:
+                
+                MDNavigationDrawerLabel:
+                    text: "File"
+                MDNavigationDrawerItem:
+                    on_release: 
+                        app.dialog_box()
+                    MDNavigationDrawerItemLeadingIcon:
+                        icon: "file"
+                    MDNavigationDrawerItemText:
+                        user_font_size: "48sp"
+                        text: "Create"
+                MDNavigationDrawerDivider:
+
+                MDNavigationDrawerLabel:
+                    text: "Search"
+                MDNavigationDrawerItem:
+                    on_release: app.nextScreen("search")
+                    MDNavigationDrawerItemLeadingIcon:
+                        icon: "file-find"
+                    MDNavigationDrawerItemText:
+                        user_font_size: "48sp"
+                        text: "Search files"
+                MDNavigationDrawerDivider:
+
+                MDNavigationDrawerLabel:
+                    text: "Add User"
+                MDNavigationDrawerItem:
+                    on_release: 
+                        app.show_add_account_dialog()
+                    MDNavigationDrawerItemLeadingIcon:
+                        icon: "account-plus"
+                    MDNavigationDrawerItemText:
+                        text: "Create User"
+                MDNavigationDrawerDivider:
+
+
+                MDNavigationDrawerLabel:
+                    text: "Update Role"
+                MDNavigationDrawerItem:
+                    on_release: 
+                        app.show_update_account_dialog()
+                    MDNavigationDrawerItemLeadingIcon:
+                        icon: "lock-reset"
+                    MDNavigationDrawerItemText:
+                        text: "Change User's Role"
+                MDNavigationDrawerDivider:
+
+                MDNavigationDrawerLabel:
+                    text: "Delete User"
+                MDNavigationDrawerItem:
+                    on_release: 
+                        app.show_delete_account_dialog()
+                    MDNavigationDrawerItemLeadingIcon:
+                        icon: "account-remove"
+                    MDNavigationDrawerItemText:
+                        text: "Delete User"
+                MDNavigationDrawerDivider:
+
+                MDNavigationDrawerLabel:
+                    text: "About Us"
+                MDNavigationDrawerItem:
+                    on_release: 
+                        app.nextScreen("about us")
+                    MDNavigationDrawerItemLeadingIcon:
+                        icon: "information"
+                    MDNavigationDrawerItemText:
+                        text: "My Info"
+                MDNavigationDrawerDivider:
+
+                
+
+
+                MDNavigationDrawerLabel:
+                    text: "Exit"
+                MDNavigationDrawerItem:
+                    on_release: 
+                        #app.nextScreen("welcome") # Used to store the current screen to the navigation history and change 
+                        app.close_app()
+                    MDNavigationDrawerItemLeadingIcon:
+                        icon: "power"
+                    MDNavigationDrawerItemText:
+                        user_font_size: "48sp"
+                        text: "Quit"
+                MDNavigationDrawerDivider:
+
+
+
+<MenuScreen2>:
+    name: "menu2"
+    
+    Image:
+        source: "./Image/menu2.jpg" # menu2
+        allow_stretch: True
+        size_hint: 1, 1
+        keep_ratio: False
+        opacity: 1
+    
+    MDLabel:
+        text: "xSAVE"
+        font_style: "Display"
+        role: "large"
+        halign: "center"
+
+    BoxLayout:
+        orientation: "vertical"
+        size_hint_y: None
+        height: self.minimum_height
+        pos_hint: {"center_x": 0.5, "center_y": 0.2}
+
+
+    MDNavigationLayout
+        MDScreenManager
+            MDScreen
+                #theme_bg_color: "Custom"
+                #md_bg_color: app.theme_cls.backgroundColor
+                MDBoxLayout:
+                    orientation: "vertical"
+                    MDTopAppBar:
+                        type: "small"
+                        theme_bg_color: "Custom"
+                        md_bg_color: 216/255.0, 191/255.0, 216/255.0, 1
+            
+                        MDTopAppBarLeadingButtonContainer:
+                            MDActionTopAppBarButton:
+                                icon: "menu"
+                                on_release: nav_drawer.set_state("toggle")
+                        
+                        MDTopAppBarTitle:
+                            text: "MENU"
+                            #pos_hint: {"center_x": .5}
+                            bold: True
+
+                        MDTopAppBarTrailingButtonContainer:
+                            MDActionTopAppBarButton:
+                                icon: "exit-to-app"
+                                on_release: app.nextScreen("login")
+
+                    Widget: # Spacer to push content below the top bar
+
+                    
+
+
+        MDNavigationDrawer:
+            id: nav_drawer
+            #drawer_type: "modal"
+            #anchor: "left"
+            width: 307
+            radius: [0, 0, 0, 0]# LT, RT, RB, LB
+
+            MDNavigationDrawerMenu:
+                BoxLayout:
+                    orientation: "vertical"
+                    size_hint_y: None
+                    padding: [0, dp(50), 0, dp(20)] # L T R B
+                    spacing: dp(40)
+                    height: dp(315)
+                    #height: self.minimum_height
+                    Image:
+                        source: "./Image/profile-logo.png"
+                        size_hint: None, None
+                        size: 500, 250
+                        halign: "center"
+                        pos_hint:{"center_x": 0.5} # Using "center_y" will have no effect since the orientation of the BoxLayout is vertical
+                    MDLabel:
+                        #text: "USER"
+                        text: "SmarTrack"
+                        halign: "center"
+                        pos_hint: {"center_x": 0.5}
+                        #font_size:40
+                        font_style: "Headline"
+                        role: "large"
+
+                MDNavigationDrawerDivider:
+                
+                MDNavigationDrawerLabel:
+                    text: "File"
+                MDNavigationDrawerItem:
+                    on_release: 
+                        app.dialog_box()
+                    MDNavigationDrawerItemLeadingIcon:
+                        icon: "file"
+                    MDNavigationDrawerItemText:
+                        user_font_size: "48sp"
+                        text: "Create"
+                MDNavigationDrawerDivider:
+
+                MDNavigationDrawerLabel:
+                    text: "Search"
+                MDNavigationDrawerItem:
+                    on_release: app.nextScreen("search")
+                    MDNavigationDrawerItemLeadingIcon:
+                        icon: "file-find"
+                    MDNavigationDrawerItemText:
+                        user_font_size: "48sp"
+                        text: "Search files"
+                MDNavigationDrawerDivider:
+
+                MDNavigationDrawerLabel:
+                    text: "About Us"
+                MDNavigationDrawerItem:
+                    on_release: 
+                        app.nextScreen("about us")
+                    MDNavigationDrawerItemLeadingIcon:
+                        icon: "information"
+                    MDNavigationDrawerItemText:
+                        text: "My Info"
+                MDNavigationDrawerDivider:
+
+                
+
+
+                MDNavigationDrawerLabel:
+                    text: "Exit"
+                MDNavigationDrawerItem:
+                    on_release: 
+                        #app.nextScreen("welcome") # Used to store the current screen to the navigation history and change 
+                        app.close_app()
+                    MDNavigationDrawerItemLeadingIcon:
+                        icon: "door-open"
+                    MDNavigationDrawerItemText:
+                        user_font_size: "48sp"
+                        text: "Quit"
+                MDNavigationDrawerDivider:
+
+
+<MenuScreen3>:
+    name: "menu3"
+    
+    MDFloatLayout:
+
+        Image:
+            source: "./Image/menuV2.jpg"
+            allow_stretch: True
+            size_hint: 1, 1
+            keep_ratio: False
+            opacity: 1
+        
+        MDLabel:
+            text: "xSAVE"
+            font_style: "Display"
+            role: "large"
+            halign: "center"
+            pos_hint: {"center_x": .5, "center_y": 0.1}
+
+
+
+
+    MDNavigationLayout
+        MDScreenManager
+            MDScreen
+                #theme_bg_color: "Custom"
+                #md_bg_color: app.theme_cls.backgroundColor
+                MDBoxLayout:
+                    orientation: "vertical"
+                    MDTopAppBar:
+                        type: "small"
+                        theme_bg_color: "Custom"
+                        md_bg_color: 216/255.0, 191/255.0, 216/255.0, 1
+            
+                        MDTopAppBarLeadingButtonContainer:
+                            MDActionTopAppBarButton:
+                                icon: "menu"
+                                on_release: nav_drawer.set_state("toggle")
+                        
+                        MDTopAppBarTitle:
+                            text: "MENU"
+                            #pos_hint: {"center_x": .5}
+                            bold: True
+
+                        MDTopAppBarTrailingButtonContainer:
+                            MDActionTopAppBarButton:
+                                icon: "exit-to-app"
+                                on_release: app.nextScreen("login")
+
+                    Widget: # Spacer to push content below the top bar
+
+                    
+
+
+        MDNavigationDrawer:
+            id: nav_drawer
+            #drawer_type: "modal"
+            #anchor: "left"
+            width: 307
+            radius: [0, 0, 0, 0]# LT, RT, RB, LB
+
+            MDNavigationDrawerMenu:
+                BoxLayout:
+                    orientation: "vertical"
+                    size_hint_y: None
+                    padding: [0, dp(50), 0, dp(20)] # L T R B
+                    spacing: dp(40)
+                    height: dp(315)
+                    #height: self.minimum_height
+                    Image:
+                        source: "./Image/profile-logo.png"
+                        size_hint: None, None
+                        size: 500, 250
+                        halign: "center"
+                        pos_hint:{"center_x": 0.5} # Using "center_y" will have no effect since the orientation of the BoxLayout is vertical
+                    MDLabel:
+                        #text: "USER"
+                        text: "SmarTrack"
+                        halign: "center"
+                        pos_hint: {"center_x": 0.5}
+                        #font_size:40
+                        font_style: "Headline"
+                        role: "large"
+
+                MDNavigationDrawerDivider:
+
+                MDNavigationDrawerLabel:
+                    text: "Search"
+                MDNavigationDrawerItem:
+                    on_release: app.nextScreen("search2")
+                    MDNavigationDrawerItemLeadingIcon:
+                        icon: "file-find"
+                    MDNavigationDrawerItemText:
+                        user_font_size: "48sp"
+                        text: "Search files"
+                MDNavigationDrawerDivider:
+
+                MDNavigationDrawerLabel:
+                    text: "About Us"
+                MDNavigationDrawerItem:
+                    on_release: 
+                        app.nextScreen("about us")
+                    MDNavigationDrawerItemLeadingIcon:
+                        icon: "information"
+                    MDNavigationDrawerItemText:
+                        text: "My Info"
+                MDNavigationDrawerDivider:
+
+               
+
+
+                MDNavigationDrawerLabel:
+                    text: "Exit"
+                MDNavigationDrawerItem:
+                    on_release: 
+                        #app.nextScreen("welcome") # Used to store the current screen to the navigation history and change 
+                        app.close_app()
+                    MDNavigationDrawerItemLeadingIcon:
+                        icon: "close"
+                    MDNavigationDrawerItemText:
+                        user_font_size: "48sp"
+                        text: "Quit"
+                MDNavigationDrawerDivider:
+
+
+<SearchScreen>:
+    name: "search"
+    MDBoxLayout:
+        md_bg_color: app.theme_cls.backgroundColor
+        orientation: "vertical"
+        MDTopAppBar:
+            type: "small"
+            elevation: 9
+            theme_bg_color: "Custom"
+            md_bg_color: 216/255.0, 191/255.0, 216/255.0, 1
+            MDTopAppBarLeadingButtonContainer:
+                MDActionTopAppBarButton:
+                    icon: "arrow-left"
+                    on_release: 
+                        app.previousScreen()
+            
+            MDTopAppBarTitle:
+                text: "Search Archive"
+                pos_hint: {"center_x": .5}
+                bold: True
+                
+
+
+        # Main content layout
+        MDFloatLayout:
+            MDTextField:
+                id: search_input
+                mode: "outlined"
+                size_hint_x: 0.6
+                pos_hint: {"x": 0.1, "center_y": .5}
+
+                MDTextFieldLeadingIcon:
+                    icon: "magnify"
+
+                MDTextFieldHintText:
+                    text: "Search"
+
+            MDButton:
+                style: "elevated"
+                pos_hint: {"right": 0.9, "center_y": .5}
+                on_release: 
+                    app.on_search()
+                MDButtonText:
+                    text: "Search"
+                    theme_text_color: "Custom"
+                    text_color: 0.1, 0.1, 0.9, 1
+                    font_style: "Body"
+                    role: "large"
+
+        ScrollView:
+            do_scroll_y: True
+            do_scroll_x: False
+            bar_width: dp(5)  # Increased scrollbar width
+            bar_color: 0.5, 0.5, 0.5, 1  # Default scrollbar color (semi-transparent blue)
+            bar_inactive_color: 0.8, 0.8, 0.8, 1  # Lighter color when inactive
+            effect_cls: 'ScrollEffect'
+            scroll_type: ['bars']
+            BoxLayout:
+                orientation: "vertical"
+                size_hint_y: None
+                height: self.minimum_height
+                padding: dp(15), dp(15)  # Ensures margin from left and bottom
+    
+
+                MDCard:
+                    elevation: 10
+                    size_hint: 0.9, None  # 90% width of the parent
+                    height: self.minimum_height  # Adjust height based on content
+                    pos_hint: {"center_x": 0.5}  # Center horizontally
+                    padding: dp(10)
+                    spacing: dp(10)
+                    orientation: "vertical"
+
+                    MDBoxLayout:
+                        id: search_results
+                        orientation: "vertical"
+                        size_hint_y: None
+                        height: self.minimum_height
+                        spacing: dp(10)
+
+
+<SearchScreen2>:
+    name: "search2"
+    MDBoxLayout:
+        md_bg_color: app.theme_cls.backgroundColor
+        orientation: "vertical"
+        MDTopAppBar:
+            type: "small"
+            elevation: 9
+            theme_bg_color: "Custom"
+            md_bg_color: 216/255.0, 191/255.0, 216/255.0, 1
+            MDTopAppBarLeadingButtonContainer:
+                MDActionTopAppBarButton:
+                    icon: "arrow-left"
+                    on_release: 
+                        app.previousScreen()
+            
+            MDTopAppBarTitle:
+                text: "Search Archive"
+                pos_hint: {"center_x": .5}
+                bold: True
+
+        # Main content layout
+        MDFloatLayout:
+            MDTextField:
+                id: search_input
+                mode: "outlined"
+                size_hint_x: 0.6
+                pos_hint: {"x": 0.1, "center_y": .5}
+
+                MDTextFieldLeadingIcon:
+                    icon: "magnify"
+
+                MDTextFieldHintText:
+                    text: "Search"
+
+            MDButton:
+                style: "elevated"
+                pos_hint: {"right": 0.9, "center_y": .5}
+                on_release: 
+                    app.on_search2()
+                MDButtonText:
+                    text: "Search"
+                    theme_text_color: "Custom"
+                    text_color: 0.1, 0.1, 0.9, 1
+                    font_style: "Body"
+                    role: "large"
+
+        ScrollView:
+            do_scroll_y: True
+            do_scroll_x: False
+            bar_width: dp(5)  # Increased scrollbar width
+            bar_color: 0.5, 0.5, 0.5, 1  # Default scrollbar color (semi-transparent blue)
+            bar_inactive_color: 0.8, 0.8, 0.8, 1  # Lighter color when inactive
+            effect_cls: 'ScrollEffect'
+            scroll_type: ['bars']
+            BoxLayout:
+                orientation: "vertical"
+                size_hint_y: None
+                height: self.minimum_height
+                padding: dp(15), dp(15)  # Ensures margin from left and bottom
+
+                MDCard:
+                    elevation: 10
+                    size_hint: 0.9, None  # 90% width of the parent
+                    height: self.minimum_height  # Adjust height based on content
+                    pos_hint: {"center_x": 0.5}  # Center horizontally
+                    padding: dp(10)
+                    spacing: dp(10)
+                    orientation: "vertical"
+
+                    MDBoxLayout:
+                        id: search_results
+                        orientation: "vertical"
+                        size_hint_y: None
+                        height: self.minimum_height
+                        spacing: dp(10)
+
+
+
+<ViewRecordScreen>:
+    name: "view_record_screen"
+    MDBoxLayout:
+        theme_bg_color: "Custom"
+        #md_bg_color: app.theme_cls.backgroundColor
+        md_bg_color: 1, 1, 1, 1
+        orientation: 'vertical'
+        ScrollView:
+            do_scroll_y: True
+            do_scroll_x: False
+            bar_width: dp(8)
+            bar_color: 0.5, 0.5, 0.5, 1
+            bar_inactive_color: 0.8, 0.8, 0.8, 1
+            effect_cls: 'ScrollEffect'
+            scroll_type: ['bars', 'content']
+
+            MDBoxLayout:  # Main BoxLayout inside ScrollView - Ensure vertical
+                orientation: "vertical" # Explicitly set orientation to vertical
+                size_hint_y: None
+                height: self.minimum_height
+                padding: dp(15), dp(105), dp(15), dp(40)
+
+                MDCard:  # MDCard to contain record details - Ensure vertical
+                    elevation: 6
+                    theme_bg_color: "Custom"
+                    md_bg_color: 200/255.0, 200/255.0, 221/255.0, .5
+                    size_hint_y: None
+                    height: self.minimum_height
+                    size_hint_x: 0.7
+                    #width: dp(450)
+                    pos_hint: {"center_x": 0.5}
+                    padding: dp(10), dp(15), dp(15), dp(15)
+                    spacing: dp(10)
+                    orientation: "vertical" # Explicitly set orientation to vertical
+                    
+
+                    MDBoxLayout: # content_layout - For vertical stacking of key-value pairs
+                        id: content_layout
+                        orientation: "vertical" # Explicitly set orientation to vertical - crucial for vertical list
+                        size_hint_y: None
+                        height: self.minimum_height
+                        spacing: dp(10)
+                        padding: dp(0), dp(15)
+
+    MDNavigationLayout:
+        ScreenManager:
+            Screen:
+                MDBoxLayout:
+                    orientation: "vertical"
+                    MDTopAppBar:
+                        type: "small"
+                        elevation: 9
+                        theme_bg_color: "Custom"
+                        md_bg_color: 216/255.0, 191/255.0, 216/255.0, 1
+                        MDTopAppBarLeadingButtonContainer:
+                            MDActionTopAppBarButton:
+                                icon: "arrow-left"
+                                on_release: 
+                                    app.previousScreen()
+                        
+                        MDTopAppBarTitle:
+                            text: "xSAVE Leasing Form"
+                            pos_hint: {"center_x": .5}
+                            bold: True
+
+                    Widget:
+
+
+
+<form_filling_yes_leasing>:
+    name: "leasing"
+    Image:
+        source: ""
+        keep_ratio: False
+        allow_stretch: True
+        size_hint: 1, 1
+        opacity: 0.6
+
+    MDBoxLayout:
+        #md_bg_color: 155/255.0, 135/255.0, 160/255.0, 0.5
+        orientation: "vertical"
+        ScrollView:
+            #bar_width: dp(15)  # Increased scrollbar width
+            #bar_color: 0.1, 0.1, 0.1, 1  # Default scrollbar color (semi-transparent blue)
+            #bar_inactive_color: 0.8, 0.8, 0.8, 1  # Lighter color when inactive
+            effect_cls: 'ScrollEffect'
+            scroll_type: ['bars']  # Allow scrolling with both content and bar
+            on_scroll_y: app.check_scroll_1(*args)
+            do_scroll_x: True
+
+            MDBoxLayout:
+                id: leasing_form
+                orientation: 'vertical'
+                size_hint_y: None
+                height: self.minimum_height
+                padding: dp(80)
+                spacing: dp(20)
+
+        MDFloatLayout:
+            size_hint_y: None
+            height: dp(60)
+            padding: dp(10)
+            #md_bg_color: 183/255.0, 135/255.0, 160/255.0, 0.3
+
+            MDButton:
+                style: "filled"
+                id: save_button
+                radius: [dp(5), dp(5), dp(5), dp(5)]
+                #md_bg_color: app.theme_cls.accent_color
+                size_hint_y: None
+                height: dp(50)
+                #theme_bg_color: "Custom"
+                #md_bg_color: 0.4, 0.4, 0.8, 1
+                pos_hint: {"right": 0.95, "center_y": 0.5}
+                opacity: 0
+                disabled: True
+                on_release: 
+                    app.save_leasing_pdf()
+                MDButtonText:
+                    text: "Save"
+                    #theme_text_color: "Custom"
+                    #text_color: 0.1, 0.1, 0.9, 1
+                    font_style: "Title"
+                    role: "small"
+
+
+            
+    MDNavigationLayout:
+        ScreenManager:
+            Screen:
+                MDBoxLayout:
+                    orientation: "vertical"
+                    MDTopAppBar:
+                        type: "small"
+                        elevation: 9
+                        theme_bg_color: "Custom"
+                        md_bg_color: 216/255.0, 191/255.0, 216/255.0, 1
+                        MDTopAppBarLeadingButtonContainer:
+                            MDActionTopAppBarButton:
+                                icon: "arrow-left"
+                                on_release: 
+                                    app.previousScreen()
+                        
+                        MDTopAppBarTitle:
+                            text: "xSAVE Leasing Form"
+                            pos_hint: {"center_x": .5}
+                            bold: True
+
+                    Widget:
+
+
+
+
+
+<edit_form_filling_leasing>:
+    name: "edit_leasing"
+
+    Image:
+        source: "" # leasing.jpg
+        keep_ratio: False
+        allow_stretch: True
+        size_hint: 1, 1
+        opacity: 0.6
+
+    MDBoxLayout:
+        #md_bg_color: 155/255.0, 135/255.0, 160/255.0, 0.5
+        orientation: "vertical"
+        ScrollView:
+            #bar_width: dp(15)  # Increased scrollbar width
+            #bar_color: 0.1, 0.1, 0.1, 1  # Default scrollbar color (semi-transparent blue)
+            #bar_inactive_color: 0.8, 0.8, 0.8, 1  # Lighter color when inactive
+            effect_cls: 'ScrollEffect'
+            scroll_type: ['bars']  # Allow scrolling with both content and bar
+            on_scroll_y: app.check_scroll_4(*args)
+            do_scroll_x: False
+            
+            MDBoxLayout:
+                id: leasing_form
+                orientation: 'vertical'
+                size_hint_y: None
+                height: self.minimum_height
+                padding: dp(80)
+                spacing: dp(20)
+    
+        MDFloatLayout: # spacing can't be used inside FloatLayout
+            size_hint_y: None
+            height: dp(60)
+            padding: 10
+            MDButton:
+                style: "filled"
+                id: update_button2
+                radius: [dp(5), dp(5), dp(5), dp(5)]
+                #md_bg_color: app.theme_cls.accent_color
+                size_hint_y: None
+                height: dp(50)
+                #theme_bg_color: "Custom"
+                #md_bg_color: 0.4, 0.4, 0.8, 1
+                pos_hint: {"right": 0.95, "center_y": 0.5}
+                opacity: 0
+                disabled: True
+                on_release: 
+                    app.save_leasing_edit(root.pdf)
+                MDButtonText:
+                    text: "Update"
+                    #theme_text_color: "Custom"
+                    #text_color: 0.1, 0.1, 0.9, 1
+                    font_style: "Title"
+                    role: "small"
+            
+
+    MDNavigationLayout
+        ScreenManager
+            Screen
+                BoxLayout:
+                    orientation: "vertical"
+                    MDTopAppBar:
+                        type: "small"
+                        elevation: 9
+                        theme_bg_color: "Custom"
+                        md_bg_color: 216/255.0, 191/255.0, 216/255.0, 1
+                        MDTopAppBarLeadingButtonContainer:
+                            MDActionTopAppBarButton:
+                                icon: "arrow-left"
+                                on_release: 
+                                    app.previousScreen()
+
+                        
+                        MDTopAppBarTitle:
+                            text: "xSAVE Edit_Leasing Form"
+                            pos_hint: {"center_x": .5}
+                            bold: True
+
+                    Widget:
+
+
+
+
+
+<edit_form_filling_no_leasing>:
+    name: "edit_no_leasing"
+
+    Image:
+        source: "" # no_leasing.jpg
+        keep_ratio: False
+        allow_stretch: True
+        size_hint: 1, 1
+        opacity: 0.6
+
+    MDBoxLayout:
+        #md_bg_color: 155/255.0, 135/255.0, 160/255.0, 0.5
+        orientation: "vertical"
+        ScrollView:
+            #bar_width: dp(15)  # Increased scrollbar width
+            #bar_color: 0.1, 0.1, 0.1, 1  # Default scrollbar color (semi-transparent blue)
+            #bar_inactive_color: 0.8, 0.8, 0.8, 1  # Lighter color when inactive
+            effect_cls: 'ScrollEffect'
+            scroll_type: ['bars']  # Allow scrolling with both content and bar
+            on_scroll_y: app.check_scroll_3(*args)
+            do_scroll_x: False
+            
+            MDBoxLayout:
+                id: no_leasing_form
+                orientation: 'vertical'
+                size_hint_y: None
+                height: self.minimum_height
+                padding: dp(80)
+                spacing: dp(20)
+    
+        MDFloatLayout: # spacing can't be used inside FloatLayout
+            size_hint_y: None
+            height: dp(60)
+            padding: 10
+            MDButton:
+                style: "filled"
+                id: update_button
+                radius: [dp(5), dp(5), dp(5), dp(5)]
+                #md_bg_color: app.theme_cls.accent_color
+                size_hint_y: None
+                height: dp(50)
+                #theme_bg_color: "Custom"
+                #md_bg_color: 0.4, 0.4, 0.8, 1
+                pos_hint: {"right": 0.95, "center_y": 0.5}
+                opacity: 0
+                disabled: True
+                on_release: 
+                    app.save_no_leasing_edit(root.pdf_id)
+                MDButtonText:
+                    text: "Update"
+                    #theme_text_color: "Custom"
+                    #text_color: 0.1, 0.1, 0.9, 1
+                    font_style: "Title"
+                    role: "small"
+           
+    MDNavigationLayout
+        ScreenManager
+            Screen
+                BoxLayout:
+                    orientation: "vertical"
+                    MDTopAppBar:
+                        type: "small"
+                        elevation: 9
+                        theme_bg_color: "Custom"
+                        md_bg_color: 216/255.0, 191/255.0, 216/255.0, 1
+                        MDTopAppBarLeadingButtonContainer:
+                            MDActionTopAppBarButton:
+                                icon: "arrow-left"
+                                on_release: 
+                                    app.previousScreen()
+
+                        
+                        MDTopAppBarTitle:
+                            text: "xSAVE Edit_No_Leasing Form"
+                            pos_hint: {"center_x": .5}
+                            bold: True
+
+                    Widget:
+
+
+
+    
+
+<form_filling_no_leasing>:
+    name: "no_leasing"
+
+    Image:
+        source: ""
+        keep_ratio: False
+        allow_stretch: True
+        size_hint: 1, 1
+        opacity: 0.6
+
+    MDBoxLayout:
+        #md_bg_color: 155/255.0, 135/255.0, 160/255.0, 0.5
+        orientation: "vertical"
+        ScrollView:
+            #bar_width: dp(15)  # Increased scrollbar width
+            #bar_color: 0.1, 0.1, 0.1, 1  # Default scrollbar color (semi-transparent blue)
+            #bar_inactive_color: 0.8, 0.8, 0.8, 1  # Lighter color when inactive
+            effect_cls: 'ScrollEffect'
+            scroll_type: ['bars']  # Allow scrolling with both content and bar
+            on_scroll_y: app.check_scroll_2(*args)
+            do_scroll_x: False
+            
+            MDBoxLayout:
+                id: no_leasing_form
+                orientation: 'vertical'
+                size_hint_y: None
+                height: self.minimum_height
+                padding: dp(80)
+                spacing: dp(20)
+    
+        MDFloatLayout: # spacing can't be used inside FloatLayout
+            size_hint_y: None
+            height: dp(60)
+            padding: 10
+            MDButton:
+                style: "filled"
+                id: save_button
+                radius: [dp(5), dp(5), dp(5), dp(5)]
+                #md_bg_color: app.theme_cls.accent_color
+                size_hint_y: None
+                height: dp(50)
+                #theme_bg_color: "Custom"
+                #md_bg_color: 0.4, 0.4, 0.8, 1
+                pos_hint: {"right": 0.95, "center_y": 0.5}
+                opacity: 0
+                disabled: True
+                on_release: 
+                    app.save_no_leasing_pdf()
+                MDButtonText:
+                    text: "Save"
+                    #theme_text_color: "Custom"
+                    #text_color: 0.1, 0.1, 0.9, 1
+                    font_style: "Title"
+                    role: "small"
+            
+
+    MDNavigationLayout
+        ScreenManager
+            Screen
+                BoxLayout:
+                    orientation: "vertical"
+                    MDTopAppBar:
+                        type: "small"
+                        elevation: 9
+                        theme_bg_color: "Custom"
+                        md_bg_color: 216/255.0, 191/255.0, 216/255.0, 1
+                        MDTopAppBarLeadingButtonContainer:
+                            MDActionTopAppBarButton:
+                                icon: "arrow-left"
+                                on_release: 
+                                    app.previousScreen()
+
+                        
+                        MDTopAppBarTitle:
+                            text: "xSAVE No_Leasing Form"
+                            bold: True
+                            pos_hint: {"center_x": .5}
+
+                    Widget:# PUTTING THIS WIDGET UNDER MDTOPAPPBAR WILL SHIFT THE BAR TO THE TOP BY CREATING A WIDGET JUST BELOW IT.
+
+
+
+<About_Us>:
+    name: "about us"
+    MDBoxLayout:    
+        md_bg_color: app.theme_cls.backgroundColor
+        orientation: "vertical"
+
+        MDTopAppBar:
+            type: "small"
+            elevation: 9
+            theme_bg_color: "Custom"
+            md_bg_color: 216/255.0, 191/255.0, 216/255.0, 1
+            MDTopAppBarLeadingButtonContainer:
+                MDActionTopAppBarButton:
+                    icon: "arrow-left"
+                    on_release: 
+                        app.previousScreen()
+            
+            MDTopAppBarTitle:
+                text: "About Us"
+                bold: True
+                pos_hint: {"center_x": .5}
+
+        # Main content layout
+        MDBoxLayout:
+            theme_bg_color: "Custom"
+            #md_bg_color: app.theme_cls.backgroundColor 
+            orientation: "vertical"
+            padding: dp(10)
+            spacing: dp(10)
+
+            # Personal Information and Image at the top
+            GridLayout:
+                cols: 2
+                spacing: dp(20)
+                padding: dp(20)
+                size_hint_y: None
+                height: dp(250)  # Ensure the height fits the content
+
+                # Left section: Personal information
+                BoxLayout:
+                    orientation: "vertical"
+                    spacing: dp(5)
+
+                    MDLabel: 
+                        text: "Personal Information"
+                        role: "medium"
+                        font_style: "Headline"
+                        theme_text_color: "Custom"
+                        text_color: (186/255.0, 85/255.0, 211/255.0, 0.8)
+                        halign: "center"
+                        bold: True
+                        size_hint_y: None
+                        height: dp(40)
+
+                    MDCard:
+                        orientation: "vertical"
+                        padding: dp(10)
+                        spacing: dp(5)
+                        elevation: 10
+                        radius: [10, 10, 10, 10]
+                        shadow_softness: 10
+                        shadow_offset: (2, 2)
+                        pos_hint: {"center_x": 0.5}
+                        size_hint_y: None
+                        size_hint_x: 0.9
+                        #width: 390
+                        height: self.minimum_height
+
+                        MDLabel: 
+                            text: "GBETNKOM FARES FAHIM BECHIR"
+                            role: "medium"
+                            font_style: "Body"
+                            size_hint_y: None
+                            height: self.texture_size[1]
+                            halign: "left"
+                        MDDivider:
+                            height: dp(1)
+
+                        MDLabel: 
+                            text: "email: gbetnkom.bechir@gmail.com"
+                            role: "medium"
+                            font_style: "Body"
+                            size_hint_y: None
+                            height: self.texture_size[1]
+                            halign: "left"
+                        MDDivider:
+                            height: dp(1)
+
+                        MDLabel: 
+                            text: "Contact: (+237) 698594077/ (+237) 682460944"
+                            role: "medium"
+                            font_style: "Body"
+                            size_hint_y: None
+                            height: self.texture_size[1]
+                            halign: "left"
+                        MDDivider:
+                            height: dp(1)
+
+                        MDLabel: 
+                            text: "Location: Douala-Bonamoussadi"
+                            role: "medium"
+                            font_style: "Body"
+                            size_hint_y: None
+                            height: self.texture_size[1]
+                            halign: "left"
+
+                # Right section: Image
+                BoxLayout:
+                    orientation: "vertical"
+                    padding: dp(0)
+                    spacing: dp(10)
+                    Image:
+                        source: "./Image/GFFB.jpg"
+                        allow_stretch: True
+                        keep_ratio: True
+                        size_hint: 0.5, 0.5
+                        #size: dp(200), dp(250)
+                        pos_hint: {"center_x": 0.5}
+
+            # Scrollable content below the personal info and image
+            ScrollView:
+                bar_width: dp(5)  # Increased scrollbar width
+                bar_color: 0.5, 0.5, 0.5, 1  # Default scrollbar color (semi-transparent blue)
+                bar_inactive_color: 0.8, 0.8, 0.8, 1  # Lighter color when inactive
+                effect_cls: 'ScrollEffect'
+                scroll_type: ['bars']
+                MDBoxLayout:
+                    orientation: "vertical"
+                    padding: dp(20)
+                    spacing: dp(10)
+                    adaptive_height: True
+
+                    MDLabel:
+                        text: "Welcome to xSAVE, the innovative desktop solution designed to make archiving and document management simple and efficient. Our app was built with the modern user in mind, blending powerful features with an intuitive interface to help you store, organize, and retrieve documents seamlessly."
+                        halign: 'left'
+                        font_style: "Body"
+                        role: "large"
+                        theme_text_color: 'Secondary'
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                    
+
+                    # Section titles and content
+                    MDLabel:
+                        text: "Our Mission"
+                        font_style: "Body"
+                        role: "large"
+                        halign: 'center'
+                        bold: True
+            
+
+                    MDLabel:
+                        text: "At GFFBInc, we believe that managing and accessing important information should be stress-free and straightforward. Our mission is to provide a reliable archiving tool that empowers individuals and businesses to handle their documents securely and efficiently."
+                        halign: 'left'
+                        theme_text_color: 'Secondary'
+                        size_hint_y: None
+                        height: self.texture_size[1]
+
+                    MDLabel:
+                        text: "Our Story"
+                        halign: 'center'
+                        font_style: "Body"
+                        role: "large"
+                        bold: True
+
+                    MDLabel:
+                        text: "xSAVE was created to fill the gap in user-friendly yet powerful document archiving solutions. With a passion for problem-solving and a focus on user experience, our team developed this app to cater to those who need a robust system for their document needs, without the complexity of traditional software."
+                        halign: 'left'
+                        theme_text_color: 'Secondary'
+                        size_hint_y: None
+                        height: self.texture_size[1]
+
+                    MDLabel:
+                        text: "What We Offer"
+                        halign: 'center'
+                        font_style: "Body"
+                        role: "large"
+                        bold: True
+
+                    MDListItem:
+                        MDListItemLeadingIcon:
+                            icon: "format-list-checks"
+                        MDListItemHeadlineText:
+                            text: "User-Friendly Design"
+                        MDListItemSupportingText:
+                            text: "A simple and clean interface that makes archiving and retrieving documents easy."
+
+                    MDListItem:
+                        MDListItemLeadingIcon:
+                            icon: "star-box-multiple"
+                        MDListItemHeadlineText:
+                            text: "Powerful Features"
+                        MDListItemSupportingText:
+                            text: "From organizing by categories to custom search capabilities, we provide all the tools needed for efficient document management."
+
+                    MDListItem:
+                        MDListItemLeadingIcon:
+                            icon: "lock"
+                        MDListItemHeadlineText:
+                            text: "Security First"
+                        MDListItemSupportingText:
+                            text: "Your data's safety is our priority. xSAVE comes with built-in security features to ensure that your files remain protected."
+                        
+
+                    MDLabel:
+                        text: "Our Vision"
+                        halign: 'center'
+                        font_style: "Body"
+                        role: "large"
+                        bold: True
+
+                    MDLabel:
+                        text: "We aim to be the go-to app for individuals, professionals, and organizations looking for a dependable archiving solution. We continually improve and innovate based on user feedback and the latest technology trends."
+                        halign: 'left'
+                        theme_text_color: 'Secondary'
+                        size_hint_y: None
+                        height: self.texture_size[1]
+
+                    MDLabel:
+                        text: "Get in Touch"
+                        halign: 'center'
+                        font_style: "Body"
+                        role: "large"
+                        bold: True
+
+                    MDLabel:
+                        text: "Thank you for choosing xSAVE. We look forward to making document archiving a smoother experience for you!"
+                        halign: 'left'
+                        theme_text_color: 'Secondary'
+                        size_hint_y: None
+                        height: self.texture_size[1]
+
+                    MDLabel:
+                        text: "Our Mission"
+                        halign: 'center'
+                        font_style: "Body"
+                        role: "large"
+                        theme_text_color: "Primary"
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                        bold: True
+
+                    MDLabel:
+                        text: "Our mission is to empower users with tools that streamline their workflow, reduce clutter, and increase productivity through advanced document management capabilities."
+                        halign: 'left'
+                        theme_text_color: 'Secondary'
+                        size_hint_y: None
+                        height: self.texture_size[1]
+
+                    MDLabel:
+                        text: "[b]Copyrighted by Gbetnkom Fares \u00A9 November 13, 2024" # Or used f"{chr(169)}[/b]" for copyright symbol
+                        theme_text_color: "Secondary"
+                        halign: "center"
+                        #font_style: "Body"
+                        role: "small"
+                        #bold: True
+                        markup: True
+                    # Add more content as needed
