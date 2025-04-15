@@ -49,7 +49,7 @@ pip install https://github.com/kivymd/KivyMD/archive/master.zip
 - **pylint**: A linter that ensures your code adheres to Python’s coding standards and best practices.
 
 - **pytest**: A testing framework that makes it easy to write simple as well as scalable test cases for your code.
-  Use the following command to install the dependencies:
+Use the following command to install the dependencies:
 ```bash
 pip install kivy pygame fpdf2 black mypy pylint pytest
 ```
