@@ -255,7 +255,7 @@ class MyApp(MDApp):
         self.sm = ScreenManager(transition=NoTransition())
 
         # Load the KV file here, after the MDApp has been initialized
-        Builder.load_file("version2.0.kv")
+        Builder.load_file("main.kv")
 
         self.screen_history: list = (
             []

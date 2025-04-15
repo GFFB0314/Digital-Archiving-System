@@ -27,7 +27,7 @@ pyz = PYZ(a.pure, a.zipped_data, cipher=None)
 
 # Include kv and DB file
 a.datas += [
-    ('version2.kv', 'D:\\Python PC\\KivyMD\\Archive_system\\version2.kv', 'DATA'),
+    ('version2.kv', 'D:\\Python PC\\KivyMD\\Archive_system\\main.kv', 'DATA'),
     ('archive.db', 'D:\\Python PC\\KivyMD\\Archive_system\\data\\archive.db', 'DATA')
     ]
 
