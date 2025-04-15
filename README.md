@@ -50,9 +50,9 @@ pip install https://github.com/kivymd/KivyMD/archive/master.zip
 
 - **pytest**: A testing framework that makes it easy to write simple as well as scalable test cases for your code.
   Use the following command to install the dependencies:
-  ```bash
-  pip install kivy pygame fpdf2 black mypy pylint pytest
-  ```
+```bash
+pip install kivy pygame fpdf2 black mypy pylint pytest
+```
 
 ## Getting Started 🚀
 **Prerequisites** 📌
