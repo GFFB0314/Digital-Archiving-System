@@ -10,7 +10,7 @@ from kivymd import hooks_path as kivymd_hooks_path
 path = os.path.abspath(".")
 
 a = Analysis(
-    ["version2.0.py"],
+    ["main.py"],
     pathex=[path],
     hookspath=[kivymd_hooks_path],
     hiddenimports=[
@@ -27,7 +27,7 @@ pyz = PYZ(a.pure, a.zipped_data, cipher=None)
 
 # Include kv and DB file
 a.datas += [
-    ('version2.kv', 'D:\\Python PC\\KivyMD\\Archive_system\\main.kv', 'DATA'),
+    ('main.kv', 'D:\\Python PC\\KivyMD\\Archive_system\\main.kv', 'DATA'),
     ('archive.db', 'D:\\Python PC\\KivyMD\\Archive_system\\data\\archive.db', 'DATA')
     ]
 
