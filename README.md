@@ -30,6 +30,7 @@ The application leverages the robust features of [Kivy](https://kivy.org/), a Py
 The project is built with the following key libraries, modules, and frameworks:
 
 - **Kivy**: A modern framework for developing multitouch applications that run on multiple platforms.
+  
 - **KivyMD**: Material Design components for Kivy, installed via:
 ```bash
 pip install https://github.com/kivymd/KivyMD/archive/master.zip
@@ -50,6 +51,8 @@ pip install https://github.com/kivymd/KivyMD/archive/master.zip
 
 - **pytest**: A testing framework that makes it easy to write simple as well as scalable test cases for your code.
 
+---
+
 ## Getting Started 🚀
 **Prerequisites** 📌
 Before you start, ensure you have the following installed on your system:
@@ -64,14 +67,14 @@ Additionally, you will need to have a Git client installed to clone the reposito
 1. **Clone the Repository**
    Open your terminal or command prompt and run:
    ```bash
-   git clone https://github.com/yourusername/your-repo.git
+   git clone https://github.com/GFFB0314/Digital-Archiving-System.git
    ```
    This command will create a local copy of the project on your machine.
 
 2. **Navigate to the Project Directory**
    Change to the project directory:
    ```bash
-   cd your-repo
+   cd Digital-Archiving-System
    ```
 
 3. **Install the Required Libraries**
@@ -89,6 +92,8 @@ Additionally, you will need to have a Git client installed to clone the reposito
    ```
    This should display a list of installed packages, including all the dependencies mentioned.
 
+---
+
 ## Usage Guide 📝
 Once the installation is complete, you can start using **xSAVE**. Here’s how:
 1. **Run the Application**
@@ -105,6 +110,8 @@ Once the installation is complete, you can start using **xSAVE**. Here’s how:
    ```
 2. **Updating the Application**
     You can edit the app as you want to ensure that it matches your needs and expectations.
+
+---
 
 ## Building an Executable 🔧
 If you want to distribute **xSAVE** as a standalone executable, follow these steps:
@@ -124,12 +131,16 @@ If you want to distribute **xSAVE** as a standalone executable, follow these ste
 3. **Locate the Executable**
    After the build process completes, you will find the executable in the dist folder within your project directory. You can now share this executable with your users! The executable may not work when located inside the `dist` folder, cut and paste it in the `root` directory containing your `python` and `kivy` files.
 
+---
+
 ## Contributing 🤝
 We welcome contributions from the community! If you'd like to improve xSAVE, please fork the repository and submit a pull request. Before making significant changes, feel free to open an issue to discuss your ideas. All contributions, whether code, documentation, or bug reports, are greatly appreciated!
+
+---
 
 ## Contact 📬
 For any questions, issues, or suggestions, please feel free to contact us at:
 - Email: gbetnkom.bechir@gmail.com
-- GitHub Issues: Project Issues
+- GitHub Issues: [Project Issues](https://github.com/GFFB0314/Digital-Archiving-System/issues)
 
 Thank you for exploring **xSAVE!** We hope you find it as exciting and useful as we intended it to be. Happy coding! 😊
