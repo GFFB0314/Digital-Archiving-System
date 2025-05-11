@@ -151,4 +151,4 @@ For any questions, issues, or suggestions, please feel free to contact us at:
 
 **© 2025 Fares Gbetnkom**. This project is licensed under the **MIT License** — feel free to use, modify, and distribute it. See the full license text [here](LICENSE).
 
-Thank you for exploring **xSAVE!** We hope you find it as exciting and useful as we intended it to be. Happy coding! 😊
+Thank you for exploring **xSAVE!** We hope you find it as exciting and useful as we intended it to be. Happy saving! 😊
