@@ -14,6 +14,7 @@ Welcome to **xSAVE** – a feature-rich, cross-platform solution designed to sim
   - [Building an Executable 🔧](#building-an-executable-)
   - [Contributing 🤝](#contributing-)
   - [Contact 📬](#contact-)
+  - [License 📜](#license-)
 
 ---
 
@@ -142,5 +143,12 @@ We welcome contributions from the community! If you'd like to improve xSAVE, ple
 For any questions, issues, or suggestions, please feel free to contact us at:
 - Email: gbetnkom.bechir@gmail.com
 - GitHub Issues: [Project Issues](https://github.com/GFFB0314/Digital-Archiving-System/issues)
+  
+---
+
+## License 📜
+**MIT License** 📝
+
+**© 2025 Fares Gbetnkom**. This project is licensed under the **MIT License** — feel free to use, modify, and distribute it. See the full license text [here](LICENSE).
 
 Thank you for exploring **xSAVE!** We hope you find it as exciting and useful as we intended it to be. Happy coding! 😊
